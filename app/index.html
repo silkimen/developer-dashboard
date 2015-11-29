@@ -7,6 +7,7 @@
 
   <link href="../node_modules/winjs/css/ui-light.min.css" rel="stylesheet" />
   <link href="css/main.css" rel="stylesheet" />
+  <link href="css/listview.css" rel="stylesheet" />
 
   <script src="../node_modules/angular/angular.min.js"></script>
   <script src="../node_modules/angular-ui-router/build/angular-ui-router.min.js"></script>
@@ -62,15 +63,40 @@
   <!--
     angular templates for views follow-up
   -->
-  
+
   <script type="text/ng-template" id="/home.html">
     <h2 class="win-h2">{{title}}</h2>
   </script>
-  
+
+  <!-- view containing grid list-view with links -->
   <script type="text/ng-template" id="/links.html">
     <h2 class="win-h2">{{title}}</h2>
+
+    <!--
+      we create a listview with grid layout to show our links
+      you can invoke and reorder the items, but you can't select them
+    -->
+    
+    <win-list-view id="listview" class="win-selectionstylefilled" item-data-source="links" items-reorderable="true" selection-mode="'none'"
+    tap-behaviour="'none'" on-item-invoked="openLinkWithIndex($event.detail.itemIndex)">
+
+      <!-- I like horizontal scrolling -->
+      <win-grid-layout orientation="'horizontal'">
+      </win-grid-layout>
+      
+      <win-item-template>
+        <div class="listview-item">
+          <img class="listview-item-image" ng-src="{{item.data.icon}}" />
+          <div class="listview-item-detail">
+            <h4 class="win-h4">{{item.data.title}}</h4>
+            <h6 class="win-h6">{{item.data.text}}</h6>
+          </div>
+        </div>
+      </win-item-template>
+      
+    </win-list-view>
   </script>
-  
+
   <script type="text/ng-template" id="/settings.html">
     <h2 class="win-h2">{{title}}</h2>
   </script>

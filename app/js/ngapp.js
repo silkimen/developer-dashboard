@@ -41,7 +41,6 @@ app.config([
 app.factory('menu', [function () {
 		var menu = {};
 
-		// create some mockup menu items
 		menu.items = [
 		{
 			'label': 'Home',
@@ -66,6 +65,31 @@ app.factory('menu', [function () {
 		}];
 
 		return menu;
+}]);
+
+app.factory('links', [function () {
+	var links = [];
+
+	// some arbitrary mock data taken from microsoft's sample http://try.buildwinjs.com/playground/
+	var linksArray = [
+		{ title: 'Marvelous Mint', text: 'Gelato', icon: 'img/fruits/60Mint.png', url: 'http://google.com/search?q=Marvelous+Mint' },
+		{ title: 'Succulent Strawberry', text: 'Sorbet', icon: 'img/fruits/60Strawberry.png', url: 'http://google.com/search?q=Succulent+Strawberry' },
+		{ title: 'Banana Blast', text: 'Low-fat frozen yogurt', icon: 'img/fruits/60Banana.png', url: 'http://google.com/search?q=Banana+Blast' },
+		{ title: 'Lavish Lemon Ice', text: 'Sorbet', icon: 'img/fruits/60Lemon.png', url: 'http://google.com/search?q=Lavish+Lemon+Ice' },
+		{ title: 'Creamy Orange', text: 'Sorbet', icon: 'img/fruits/60Orange.png', url: 'http://google.com/search?q=Creamy+Orange' },
+		{ title: 'Very Vanilla', text: 'Ice Cream', icon: 'img/fruits/60Vanilla.png', url: 'http://google.com/search?q=Very+Vanilla' },
+		{ title: 'Banana Blast', text: 'Low-fat frozen yogurt', icon: 'img/fruits/60Banana.png', url: 'http://google.com/search?q=Banana+Blast' },
+		{ title: 'Lavish Lemon Ice', text: 'Sorbet', icon: 'img/fruits/60Lemon.png', url: 'http://google.com/search?q=Lavish+Lemon+Ice' }
+	];
+
+	// generate 160 mock items
+	for (var i = 0; i < 20; i++) {
+		linksArray.forEach(function (item) {
+			links.push(item);
+		});
+	}
+
+	return links;
 }]);
 
 app.controller('MainCtrl', [
@@ -94,9 +118,44 @@ app.controller('HomeCtrl', [
 
 app.controller('LinksCtrl', [
 	'$scope',
-	function ($scope) {
-		$scope.title = 'Links';
-		// just an empty controller, waiting to be filled with magic stuff
+	'$state',
+	'$window',
+	'links',
+	function ($scope, $state, $window, links) {
+		// enable horizontal scrolling by mouse wheel
+		angular.element(document).ready(function () {
+			var listView = document.getElementById('listview');
+			
+			listView.addEventListener('mousewheel', function (ev) {
+				var scroller = listView.querySelector('.win-horizontal');
+				
+				if (scroller) {
+					scroller.scrollLeft -= ev.wheelDelta;
+					ev.preventDefault();
+				}
+			});
+    });
+		
+		// determine title by state name
+		switch ($state.current.name) {
+			case 'tools':
+				$scope.title = 'Developer Tools';
+				break;
+			case 'shared':
+				$scope.title = 'Shared Bookmarks';
+				break;
+			case 'private':
+				$scope.title = 'Private Bookmarks';
+				break;
+		}
+		
+		// bind link list
+		$scope.links = links;
+		
+		// open a new window with invoked link's url
+		$scope.openLinkWithIndex = function (index) {
+			$window.open(links[index].url);
+		}
 	}
 ]);
 
