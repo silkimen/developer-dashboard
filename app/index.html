@@ -4,10 +4,56 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Developer Dashboard</title>
+
+  <link href="../node_modules/winjs/css/ui-light.min.css" rel="stylesheet" />
+  <link href="css/main.css" rel="stylesheet" />
+
+  <script src="../node_modules/angular/angular.min.js"></script>
+  <script src="../node_modules/winjs/js/base.min.js"></script>
+  <script src="../node_modules/winjs/js/ui.min.js"></script>
+  <script src="../node_modules/angular-winjs/js/angular-winjs.js"></script>
+  <script src="js/ngapp.js"></script>
 </head>
 
 <body>
-  Hello, world!
+  <div id="ngapp" ng-app="developerDashboard" ng-controller="MainCtrl">
+    <!--
+      we want to have a basic split view layout
+      see https://github.com/winjs/angular-winjs#listview for listview directive
+    -->
+    <win-split-view id="splitView">
+
+      <!-- pane contains navigation menu -->
+      <win-split-view-pane>
+
+        <div class="splitview-pane-header">
+          <!--
+            toogle button for split view pane
+            references splitWiewInstance on $scope
+          -->
+          <win-split-view-pane-toggle class="splitview-toggle" split-view="splitViewInstance">
+          </win-split-view-pane-toggle>
+
+          <!-- title of the split view pane -->
+          <div class="splitview-title">
+            <h3 class="win-h3">Dashboard Menu</h3>
+          </div>
+        </div>
+
+        <!-- will add some menu items later on -->
+        <div class="splitview-pane-commands">
+
+        </div>
+
+      </win-split-view-pane>
+
+      <!-- will be using view templates here -->
+      <win-split-view-content class="splitview-content">
+        <h2 class="win-h2">{{greeter}}</h2>
+      </win-split-view-content>
+
+    </win-split-view>
+  </div>
 </body>
 
 </html>

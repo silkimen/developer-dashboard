@@ -1,0 +1,24 @@
+#ngapp {
+  height: 100%;
+}
+
+#ngapp .splitview-toggle {
+  float: left;
+}
+
+#ngapp .splitview-pane-header,
+#ngapp .splitview-pane-commands {
+  white-space: nowrap;
+}
+
+#ngapp .splitview-title {
+  display: inline-block;
+  margin-top: 12px;
+  margin-left: 12px;
+}
+
+#ngapp .splitview-content {
+  box-sizing: border-box;
+  padding: 6px 20px;
+  height: 100%;
+}
