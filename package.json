@@ -11,6 +11,10 @@
     "url": "git+https://github.com/silkimen/developer-dashboard.git"
   },
   "keywords": [
+    "demo",
+    "sample",
+    "playground",
+    "learning",
     "winjs",
     "angular",
     "angular-winjs"
@@ -26,6 +30,7 @@
   "homepage": "https://github.com/silkimen/developer-dashboard#readme",
   "dependencies": {
     "angular": "^1.4.8",
+    "angular-ui-router": "^0.2.15",
     "angular-winjs": "^4.4.0",
     "winjs": "^4.4.0"
   }

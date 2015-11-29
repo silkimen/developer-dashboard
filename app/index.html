@@ -9,14 +9,15 @@
   <link href="css/main.css" rel="stylesheet" />
 
   <script src="../node_modules/angular/angular.min.js"></script>
+  <script src="../node_modules/angular-ui-router/build/angular-ui-router.min.js"></script>
   <script src="../node_modules/winjs/js/base.min.js"></script>
   <script src="../node_modules/winjs/js/ui.min.js"></script>
   <script src="../node_modules/angular-winjs/js/angular-winjs.js"></script>
   <script src="js/ngapp.js"></script>
 </head>
 
-<body class="win-type-body">
-  <div id="ngapp" ng-app="developerDashboard" ng-controller="MainCtrl">
+<body class="win-type-body" ng-app="developerDashboard">
+  <div id="ngapp" ng-controller="MainCtrl">
     <!--
       we want to have a basic split view layout
       see https://github.com/winjs/angular-winjs#listview for listview directive
@@ -48,13 +49,32 @@
 
       </win-split-view-pane>
 
-      <!-- will be using view templates here -->
+      <!-- using angular templates for views -->
       <win-split-view-content class="splitview-content">
-        <h2 class="win-h2">{{greeter}}</h2>
+        <ui-view>
+          <!-- templates are rendered here -->
+        </ui-view>
       </win-split-view-content>
 
     </win-split-view>
   </div>
+
+  <!--
+    angular templates for views follow-up
+  -->
+  
+  <script type="text/ng-template" id="/home.html">
+    <h2 class="win-h2">{{title}}</h2>
+  </script>
+  
+  <script type="text/ng-template" id="/links.html">
+    <h2 class="win-h2">{{title}}</h2>
+  </script>
+  
+  <script type="text/ng-template" id="/settings.html">
+    <h2 class="win-h2">{{title}}</h2>
+  </script>
+
 </body>
 
 </html>
