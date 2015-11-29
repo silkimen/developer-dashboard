@@ -17,6 +17,17 @@
   margin-left: 12px;
 }
 
+#ngapp .splitview-pane-commands {
+  margin-top: 20px;
+}
+
+#ngapp .win-splitview-pane-closed .win-splitviewcommand-label {
+  /*  Make sure pane content doesn't scroll if 
+  SplitViewCommand label receives focus while pane is closed.
+  */
+  visibility: hidden;
+}
+
 #ngapp .splitview-content {
   box-sizing: border-box;
   padding: 6px 20px;

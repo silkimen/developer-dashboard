@@ -15,7 +15,7 @@
   <script src="js/ngapp.js"></script>
 </head>
 
-<body>
+<body class="win-type-body">
   <div id="ngapp" ng-app="developerDashboard" ng-controller="MainCtrl">
     <!--
       we want to have a basic split view layout
@@ -40,9 +40,10 @@
           </div>
         </div>
 
-        <!-- will add some menu items later on -->
+        <!-- using angular's repeat directive to populate navigation commands -->
         <div class="splitview-pane-commands">
-
+          <win-split-view-command ng-repeat="item in menu" label="item.label" icon="item.icon">
+          </win-split-view-command>
         </div>
 
       </win-split-view-pane>
