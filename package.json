@@ -1,0 +1,32 @@
+{
+  "name": "developer-dashboard",
+  "version": "0.1.0",
+  "description": "Just a little playground project working on WinJS with Angular adapter",
+  "main": "app/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silkimen/developer-dashboard.git"
+  },
+  "keywords": [
+    "winjs",
+    "angular",
+    "angular-winjs"
+  ],
+  "author": {
+    "name": "Sefa Ilkimen",
+    "url": "http://ilkimen.net/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/silkimen/developer-dashboard/issues"
+  },
+  "homepage": "https://github.com/silkimen/developer-dashboard#readme",
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-winjs": "^4.4.0",
+    "winjs": "^4.4.0"
+  }
+}
