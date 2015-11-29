@@ -43,7 +43,7 @@
 
         <!-- using angular's repeat directive to populate navigation commands -->
         <div class="splitview-pane-commands">
-          <win-split-view-command ng-repeat="item in menu" label="item.label" icon="item.icon">
+          <win-split-view-command ng-repeat="item in menu" label="item.label" icon="item.icon" on-invoked="switchToView(item.target)">
           </win-split-view-command>
         </div>
 

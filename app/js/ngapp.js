@@ -70,18 +70,24 @@ app.factory('menu', [function () {
 
 app.controller('MainCtrl', [
 	'$scope',
+	'$state',
 	'menu',
-	function ($scope, menu) {
+	function ($scope, $state, menu) {
 		$scope.splitViewInstance = document.getElementById('splitView');
-		$scope.greeter = 'Hello, world!';
 		$scope.menu = menu.items;
+		$scope.switchToView = function (view) {
+			// acquire WinJS winControl on the instance to close the pane
+			$scope.splitViewInstance.winControl.closePane();
+			// change state to show target view
+			$state.go(view);
+		};
 	}
 ]);
 
 app.controller('HomeCtrl', [
 	'$scope',
 	function ($scope) {
-		$scope.title='Developer Dashboard';
+		$scope.title = 'Developer Dashboard';
 		// just an empty controller, waiting to be filled with magic stuff
 	}
 ]);
@@ -89,7 +95,7 @@ app.controller('HomeCtrl', [
 app.controller('LinksCtrl', [
 	'$scope',
 	function ($scope) {
-		$scope.title='Links';
+		$scope.title = 'Links';
 		// just an empty controller, waiting to be filled with magic stuff
 	}
 ]);
@@ -97,7 +103,7 @@ app.controller('LinksCtrl', [
 app.controller('SettingsCtrl', [
 	'$scope',
 	function ($scope) {
-		$scope.title='Settings';
+		$scope.title = 'Settings';
 		// just an empty controller, waiting to be filled with magic stuff
 	}
 ]);
