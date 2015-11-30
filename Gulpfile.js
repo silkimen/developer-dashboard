@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var sourcemaps = require('gulp-sourcemaps');
 
 var src = {};
 src.resources = ['src/**/*.*', '!src/**/*.js'];
@@ -13,8 +14,10 @@ build.scripts = build.target + 'js/';
 
 gulp.task('concatjs', function () {
   gulp.src(src.scripts)
+    .pipe(sourcemaps.init())
     .pipe(concat('ngapp.js'))
     .pipe(uglify())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(build.scripts));
 });
 
