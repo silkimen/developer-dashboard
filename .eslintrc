@@ -1,0 +1,19 @@
+{
+  /* airbnb styleguide settings */
+  "extends": "airbnb/legacy",
+  /* Mobisys settings */
+  "rules": {
+    // force spaces before function parenthesis
+    "space-before-function-paren": [ 2, { "anonymous": "always", "named": "always" } ],
+    // warn on dangling commas
+    "comma-dangle": [ 1, "never" ],
+    // ignore missing newline at end of file
+    "eol-last": 0,
+    // set tab width of 2 spaces
+    "indent": [ 2, 2, { "SwitchCase": 1 } ],
+    // warn if there are "var" declarations not at top of function scope
+    "vars-on-top": 1,
+    // warn if a function is declared within a loop
+    "no-loop-func": 1
+  }
+}
